@@ -1,0 +1,79 @@
+{% extends 'Seller/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    <title>Seller-Login</title>
+{% endblock %}
+
+{% block content %}
+
+<!-- <div class="d-flex flex-row justify-content-center" id='lbg' style="background-image:url({% static 'Image/images1.jpg' %})">
+    <div class="row">
+      <div class="col-md">
+       <form  method="POST" >
+        {% csrf_token %}
+         <div class="sign-in" style="text-align: center;">Seller-Login</div>          
+<div class="form-group">
+    <label id="mobile" for="exampleInputEmail1">Enter Mobile No</label>
+    <input type="number" class="form-control" name="mobile" aria-describedby="emailHelp" placeholder="Enter mobile_no">
+    <small id="emailHelp" class="form-text text-muted"></small>
+</div>
+<div class="form-group">
+    <label id="password" for="exampleInputPassword1">Password  </label>
+    <input type="password" class="form-control" name="password" placeholder="Password">
+<div class="form-group" class="d-flex justify-content-center mt-3 login_container">
+  <br>
+  <button type="submit" class="btn btn-primary btn-lg btn-block" id="sign-in">Sign In</button>
+   
+</div>
+
+<div>
+    {% if messages %}
+                {% for i in messages %}
+                    {{i}}
+                {% endfor %}
+            {% endif %}
+
+</div>
+
+</form> 
+<span>Dont have a Account&nbsp;&nbsp;<a href="{% url 'sellerregister' %}">Create your account</a></span>
+
+</div>
+</div>
+</div> -->
+
+<div  class='jumbotron' id='lbg' style="width: 35%; margin: 2% 30% ;height: 50%;"><h2 style="text-align: center;font-size:xx-large">sign-in</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="mn" style="font-size: medium;">Enter Mobile_no</label>
+            <input type="number" class="form-control" id="mn"  name="mobile" placeholder="enter mobile_no">
+        </div>
+
+        <div class="form-group">
+            <label for="pd" style="font-size: medium;">Password</label>
+            <input type="password" class="form-control" name="password" id="pd" placeholder="enter password">
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>
+        <div style="color: red;">
+            {% if messages %}
+            {% for i in messages %}
+            {{i}}
+            {% endfor %}
+            {% endif %}
+        </div>
+        <br>
+    </form>
+    <a href="{% url 'Sellerforgotpass' %}" ><button class="btn btn-primary btn-lg btn-block">Forgot-Password</button></a>
+    <br>
+    <span style="font-size: medium;">Dont have a Account&nbsp;&nbsp;<a href="{% url 'sellerregister' %}">Create your account</a></span>
+</div>
+{% endblock %}
+
+
+  
+
+  

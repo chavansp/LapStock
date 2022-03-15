@@ -1,0 +1,47 @@
+{% extends 'Customer/Base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- <head>
+    <style>
+        .center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head> -->
+<div style="margin: 10% 30%;width: 40%; background-color:rgb(141, 125, 104);" >
+    <div class="center" style="color:black;">
+        <form class="text-center border border-light p-5" action="{% url 'customerrazorpaysuccess' %}" method="POST">
+            {% csrf_token %}
+            <p class="h3 mb-3">
+                <i class="fas fa-coffee"></i>Place Order
+            </p>
+            <b style="color: black;font-size: large;">{{amount1}}</b><br><br>
+
+<!-- <input type="name" name="name" id="name" required class="form-control mb-4" placeholder="Name"> -->
+
+<!-- RAZORPAY INTEGRATION HERE -->
+
+            <script src="https://checkout.razorpay.com/v1/checkout.js"
+                data-key="rzp_test_E0TrRpVfHMc1l2"
+                data-amount="{{amount}}"
+                data-currency="INR"
+                data-order_id="{{payment.id}}"
+                data-buttontext="Pay with Razorpay"
+                data-name="Lapstock"
+                data-description="Secure Payment"
+                data-image="https://example.com/your_logo.jpg"
+                data-prefill.name="{{customer.name}}"
+                data-prefill.email="{{customer.user.email}}"
+                data-prefill.email="{{customer.user.mobile_no}}"
+                data-theme.color="#F37254">
+            </script>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

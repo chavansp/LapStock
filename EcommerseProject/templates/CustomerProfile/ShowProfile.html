@@ -1,0 +1,63 @@
+{% extends 'Customer/Base.html' %}
+{% load static %}
+
+{% block Block1 %}
+<title>Your Profile</title>
+{% endblock %}
+
+{% block content %}
+
+
+{% for profile in customer_profile %}
+<div class="card text-center" style="margin:3% 25%; background-color: cornsilk;">
+    <h4><b>Name : {{user.customer.name}}</b></h4>
+    <div class="card mb-3"  style="background-color: cornsilk;">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body" style="margin-left: 40%;" >
+                    <h5 class="card-title"><b>{{profile.fname}} {{profile.lname}}</b></h5>
+                    <p class="card-text">Contact:{{profile.mobile}}</p>
+                    <p class="card-text">Address:{{profile.address}},{{profile.city.city_name}},{{profile.state.state_name}},{{profile.country.country_name}}</p>
+                    <p class="card-text"></p>
+                    <a href="{% url 'customeraddressupdate' profile.id %}" class="btn btn-warning">Edit Profile</a>&nbsp;&nbsp;<a href="{% url 'delete_Profile' profile.id %}" class="btn btn-danger">Delete Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div style="margin-left: 65%;" >
+    <a href="{% url 'customeraddress' %}" class="btn btn-primary">Add New-Address</a>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+<!-- <div class="card text-center" >
+    <br>
+      <h5>User Name:{{user.customer.name}}</h5>
+    <div class="card-body">
+      <h5 class="card-title">{{profile.fname}} {{profile.lname}}</h5>
+      <p class="card-text">Contact: {{profile.mobile}}</p>
+      <p class="card-text">Address: {{profile.address}},{{profile.city.city_name}},{{profile.state.state_name}},{{profile.country.country_name}}</p>
+      <p class="card-text"></p>
+      <a href="#" class="btn btn-primary">Edit Profile</a>
+      <br><br>
+      <a href="#" class="btn btn-danger">Delete Profile</a>
+    </div>
+   
+  </div> -->
+
+
+
+
+

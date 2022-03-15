@@ -1,0 +1,62 @@
+{% extends 'Customer/Base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br>
+<div style="background-color:lightgray;" >
+
+<br>
+<div style="margin-left: 25%;"> <h3><b>Total-Items:{{tord}}</b>&nbsp</h3><h3><b>Total-Price:{{price}}</b></h3></div>
+
+{% for lap in ord %}
+    {% if lap.laptop %}
+    <div style="margin:0% 25%; ">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{lap.laptop.limage.url}}" style="width:100%;height: 100%;" class="img-fluid rounded-start" alt="Image Not Found">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>Name : {{lap.customer}}</b></h5>
+                        <p class="card-text">Model : {{lap.laptop.model_name}}</p>
+                        <p class="card-text">Price : {{lap.price}}</p>
+                        <p class="card-text">Quantity : {{lap.quantity}}</p>
+                        <a href="{% url 'customerupdateitem' lap.id %}"><button class="btn btn-warning">Add</button></a>
+                        <a href="{% url 'deleteitem' lap.id %}"><button class="btn btn-danger">Remove</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% elif lap.accessories %}
+    <div style="margin:3% 25%; ">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-md-4">
+                    <img src="{{lap.accessories.gimage.url}}" style="width:100%;height: 100%;" class="img-fluid rounded-start" alt="Image Not Found">
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <h5 class="card-title"><b>Name : {{lap.customer}}</b></h5>
+                        <p class="card-text">Product : {{lap.accessories.product_name}}</p>
+                        <p class="card-text">Price : {{lap.price}}</p>
+                        <p class="card-text">Quantity : {{lap.quantity}}</p>
+                        <a href="{% url 'customerupdateitem' lap.id %}"><button class="btn btn-warning">Add</button></a>
+                        <a href="{% url 'deleteitem' lap.id %}"><button class="btn btn-danger">Remove</button></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+{% endfor %}
+
+    <div style="margin-left: 67%;">
+    <a href="{% url 'customerorder' %}"><button class="btn btn-success" >Place-order</button></a><br><br>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>LapStock</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+    integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+  <link rel="stylesheet" href="{% static 'dashboard/css/main.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,400,600,700&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="{% static 'footer/css/ionicons.min.css' %}">
+		<link rel="stylesheet" href="{% static 'footer/css/style.css' %}">
+</head>
+
+<body >
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'sellerhome' %}">LapStock</a><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+          <ul class="navbar-nav mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="{% url 'sellerhome' %}">Home</a>
+            </li>
+              {% if user.is_authenticated %}
+
+
+              <li class="nav-item dropdown">
+
+                   <a class="dropdown-item" style="color:white;" href="{% url 'sellerinventory' %}">Seller_Inventory</a>
+                  </li>
+                    <li>
+                   <a class="dropdown-item" style="color:white;" href="{% url 'sellerlaptop' %}">Seller Laptop</a>
+                    </li>
+                <a class="dropdown-item" style="color:white;" href="{% url 'selleraccessories' %}">Seller Accessories</a>
+
+            </li>
+              <li>
+                       <a class="dropdown-item" aria-current="page" style="color:white"  href="{% url 'sellerproduct' %}">Product_Category</a>
+              </li>
+              <li>
+
+                   <a class="dropdown-item" style="color:white;" href="{% url 'Sellerpasswordchange' %}">Change Password</a>
+          </li>
+              <li>
+                <a class="dropdown-item"  style="color:white;" href="{% url 'sellerlogout' %}">Logout</a>
+              </li>
+
+                    </li>
+
+
+                {% else %}
+
+                <a class="dropdown-item" style="color:white;" href="{% url 'sellerregister' %}">Registration</a>
+                <a class="dropdown-item" style="color:white;" href="{% url 'sellerlogin' %}">Login</a>
+                 <a class="dropdown-item" style="color:white;" href="{% url 'customerhome' %}">LapStock_Market</a>
+                {% endif %}
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <br /><br />
+  <main>
+
+    {% block content %}
+    {% endblock content %}
+    <br><br>
+    <footer class="footer-04">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
+						<h2 class="footer-heading"><a href="#" class="logo">Colorlib</a></h2>
+						<p>A small river named Duden flows by their place and supplies it with the necessary regelialia.</p>
+						<a href="#">read more <span class="ion-ios-arrow-round-forward"></span></a>
+					</div>
+					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
+						<h2 class="footer-heading">Categories</h2>
+						<ul class="list-unstyled">
+              <li><a href="#" class="py-1 d-block">Buy &amp; Sell</a></li>
+              <li><a href="#" class="py-1 d-block">Merchant</a></li>
+              <li><a href="#" class="py-1 d-block">Giving back</a></li>
+              <li><a href="#" class="py-1 d-block">Help &amp; Support</a></li>
+            </ul>
+					</div>
+					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
+						<h2 class="footer-heading">Tag cloud</h2>
+						<div class="tagcloud">
+	            <a href="#" class="tag-cloud-link">dish</a>
+	            <a href="#" class="tag-cloud-link">menu</a>
+	            <a href="#" class="tag-cloud-link">food</a>
+	            <a href="#" class="tag-cloud-link">sweet</a>
+	            <a href="#" class="tag-cloud-link">tasty</a>
+	            <a href="#" class="tag-cloud-link">delicious</a>
+	            <a href="#" class="tag-cloud-link">desserts</a>
+	            <a href="#" class="tag-cloud-link">drinks</a>
+	          </div>
+					</div>
+					<div class="col-md-6 col-lg-3 mb-md-0 mb-4">
+						<h2 class="footer-heading">Subcribe</h2>
+						<form action="#" class="subscribe-form">
+              <div class="form-group d-flex">
+                <input type="text" class="form-control rounded-left" placeholder="Enter email address">
+                <button type="submit" class="form-control submit rounded-right"><span class="sr-only">Submit</span><i class="ion-ios-send"></i></button>
+              </div>
+            </form>
+            <h2 class="footer-heading mt-5">Follow us</h2>
+            <ul class="ftco-footer-social p-0">
+              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Twitter"><span class="ion-logo-twitter"></span></a></li>
+              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Facebook"><span class="ion-logo-facebook"></span></a></li>
+              <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top" title="Instagram"><span class="ion-logo-instagram"></span></a></li>
+            </ul>
+					</div>
+				</div>
+			</div>
+			<div class="w-100 mt-5 border-top py-5">
+				<div class="container">
+					<div class="row">
+	          <div class="col-md-6 col-lg-8">
+
+	            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-ios-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+	  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+	          </div>
+	          <div class="col-md-6 col-lg-4 text-md-right">
+	          	<p class="mb-0 list-unstyled">
+	          		<a class="mr-md-3" href="#">Terms</a>
+	          		<a class="mr-md-3" href="#">Privacy</a>
+	          		<a class="mr-md-3" href="#">Compliances</a>
+	          	</p>
+	          </div>
+	        </div>
+				</div>
+			</div>
+		</footer>
+
+
+  </main>
+   <script src="{% static 'footer/js/jquery.min.js' %}"></script>
+    <script src="{% static 'footer/js/popper.js' %}"></script>
+    <script src="{% static 'footer/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'footer/js/main.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+  </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
+  <script>
+      var otp_from_back="";
+      var email1="";
+      function ajax_send_otp(){
+         document.getElementById("email_div").style.display='none';
+         document.getElementById("send_email_div").style.display='block';
+         email = document.getElementById("email");
+   const url1 = $("#selemail").attr("selleremail");
+       $.post(url1,
+           {
+               "email":email.value,
+               "csrfmiddlewaretoken":"{{csrf_token}}"
+           },
+           function(data, status){
+               if(status=="success"){
+                   otp_from_back = data;
+                   email1=email.value;
+                   document.getElementById("send_email_div").style.display='none';
+                   document.getElementById("otp_div").style.display='block';
+                   }
+      }
+      );
+      }
+     function verify_otp(){
+         var user_otp=document.getElementById("otp").value;
+   const url2 = $("#verifymail").attr("verifyemail");
+         if (user_otp==otp_from_back){
+             document.getElementById("verify_text_div").style.color="green";
+             document.getElementById("verify_text_div").innerHTML="OTP is verified successfully!!";
+             document.getElementById("otp_div").style.display="none";
+             document.getElementById("form_div").style.display="block";
+             $.post(url2,
+              {
+                  "email":email1,
+                  "csrfmiddlewaretoken":"{{csrf_token}}"
+              }
+             );
+         }
+         else{
+             document.getElementById("verify_text_div").style.color="red";
+             document.getElementById("verify_text_div").innerHTML="You entered wrong OTP please enter correct OTP again!!";
+         }
+     }
+  </script>
+
+  <!-- Ajax for Seller forgot password -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js" type='text/javascript'></script>
+  <script>
+      var otp_back="";
+      var emailpass="";
+      function pass_send_otp(){
+         document.getElementById("emailpass_div").style.display='none';
+         document.getElementById("send_email_pass_div").style.display='block';
+         email = document.getElementById("email");
+   const url1 = $("#cpassemail").attr("customerpassemail");
+       $.post(url1,
+           {
+               "email":email.value,
+               "csrfmiddlewaretoken":"{{csrf_token}}"
+           },
+           function(data, status){
+               if(status=="success"){
+                   otp_back = data;
+                   emailpass=email.value;
+                   console.log(emailpass)
+                   document.getElementById("send_email_pass_div").style.display='none';
+                   document.getElementById("otp_pass_div").style.display='block';
+                   }
+      }
+      );
+      }
+     function pass_verify_otp(){
+         var user_otp=document.getElementById("otp").value;
+         if (user_otp==otp_back){
+             document.getElementById("verify_text_pass_div").style.color="green";
+             document.getElementById("verify_text_pass_div").innerHTML="OTP is verified successfully!!";
+             document.getElementById("otp_pass_div").style.display="none";
+             document.getElementById("form_pass_div").style.display="block";
+         }
+         else{
+             document.getElementById("verify_text_pass_div").style.color="red";
+             document.getElementById("verify_text_pass_div").innerHTML="You entered wrong OTP please enter correct OTP again!!";
+         }
+     }
+
+
+     function change_pass_send(){
+          document.getElementById("form_pass_div").style.display='none';
+         document.getElementById("success_pass_div").style.display='block';
+          var password=document.getElementById("id_new_password1")
+          console.log(password.value)
+          var c_password=document.getElementById('id_new_password2')
+          console.log(c_password.value)
+   const url3 = $("#passchange").attr("passchange");
+
+         if(password.value==c_password.value){
+       $.post(url3,
+
+           {
+               "email":emailpass,
+               "csrfmiddlewaretoken":"{{csrf_token}}",
+               "new_password2":password.value,
+
+           }
+      );
+          document.getElementById("verify_text_pass_div").style.color="green";
+          document.getElementById("verify_text_pass_div").innerHTML="Password is changed now successfully!!";
+          document.getElementById("success_pass_div").style.display='block';
+      }
+      else{
+          document.getElementById("verify_text_pass_div").style.color="red";
+          document.getElementById("verify_text_pass_div").innerHTML="Password is not changed, Try again!!";
+      }
+      }
+  </script>
+  </body>
+</html>

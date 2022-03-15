@@ -1,0 +1,27 @@
+{% extends 'Seller/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="hero">
+<div style="width: 70%;margin:2% 15%;color:white;text-color:black " >
+    <div style="width: 40%;margin-left:31%;color: black;padding: 5% 0%;">
+        {% if messages %}
+        {% for msj in messages %}
+        <div class="alert alert-danger" role="alert">
+            <b style="font-size: medium;">{{msj}}</b>
+        </div>
+        {% endfor %}
+        {% endif %}
+        <form method="POST" >
+            <h3 style="text-align: center;padding: 2% 0% 4% 0%;">Seller Change Password </h3>
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-info btn-lg btn-block">Change Password</button>
+        </form>
+        <br>
+    </div>
+</div>
+</div>
+{% endblock %}

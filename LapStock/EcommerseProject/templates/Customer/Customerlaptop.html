@@ -1,0 +1,54 @@
+{% extends 'Customer/Base.html' %}
+{% load static %}
+
+{% block content %}
+<br><br>
+
+{% for lap in users %}
+<div style="margin:3% 25%;">
+    <div class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img src="{{lap.limage.url}}" style="width:100%;height: 100%;" class="img-fluid rounded-start" alt="Image Not Found">
+            </div>
+
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title"><b>{{lap.brand_name}} {{lap.model_name}}</b></h5>
+                    <p class="card-text">> {{lap.ram}}&nbsp;Gb RAM</p>
+                    <p class="card-text">> {{lap.rom}}&nbsp;Gb ROM</p>
+                    <p class="card-text">> {{lap.processor}}&nbsp;Processor</p>
+                    <p class="card-text"><b style="color: darkred;">> {{lap.price}}&nbsp;Rs</b></p>
+                    <p class="card-text">> {{lap.warranty}}&nbsp;Months&nbsp;Warranty</p>
+                    <p class="card-text">> {{lap.product.seller}}&nbsp;Seller</p>
+                    <p class="card-text"><a><button class="btn btn-info">Add to Wishlist</button></a>&nbsp;<a href="{% url 'customerorderitem' lap.id %}"><button class="btn btn-success">Add to Cart</button></a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+<div style="margin:1% 25%;">
+    {% if users.has_other_pages %}
+    <ul class="pagination">
+        {% if users.has_previous %}
+        <li><a href="?page={{ users.previous_page_number }}">&laquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&laquo;</span></li>
+        {% endif %}
+        {% for i in users.paginator.page_range %}
+        {% if users.number == i %}
+        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+        {% else %}
+        <li><a href="?page={{ i }}">{{ i }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if users.has_next %}
+        <li><a href="?page={{ users.next_page_number }}">&raquo;</a></li>
+        {% else %}
+        <li class="disabled"><span>&raquo;</span></li>
+        {% endif %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock %}

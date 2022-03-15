@@ -1,0 +1,34 @@
+{% extends 'Customer/Base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block title %}Buy Now{% endblock title %}
+
+{% block content %}
+<body style="background-color:lightgray">
+<div style="width:70%; margin:2% 34%; color:white;text-color:dark ">
+    <div style="width: 30%;margin: 5% 5%;color: black;padding: 5% 0%;" >
+        {% if messages %}
+        {% for msj in messages %}
+        <div class="alert alert-danger " role="alert">
+            <b style="font-size: medium;">{{msj}}</b>
+        </div>
+        {% endfor %}
+        {% endif %}
+
+        <div>
+
+        <form method="POST">
+            <h3 style="text-align: center;padding: 2% 0% 4% 0%;">Customer Change Password </h3>
+            {% csrf_token %}
+            {{form|crispy}}
+            <br>
+            <button type="submit" class="btn btn-info btn-lg btn-block">Change Password</button>
+        </form>
+
+        <br>
+        </div>
+    </div>
+</div>
+</body>
+{% endblock  %}
